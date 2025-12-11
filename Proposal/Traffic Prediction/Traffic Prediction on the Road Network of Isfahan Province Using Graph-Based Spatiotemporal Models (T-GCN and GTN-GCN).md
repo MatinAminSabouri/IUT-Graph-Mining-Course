@@ -1,8 +1,21 @@
-# **Traffic Prediction on the Road Network of Isfahan Province Using Graph-Based Spatiotemporal Models (T-GCN and GTN-GCN)**
+# Graph Mining Course Project Proposal
 
-**Authors:** Amirhossein Lavafi Barzaki, Matin Aminsabouri
+**Submission Date:** 1404/09/20
+**Course:** Graph Mining [4041]
+**Instructor:** Dr. Zeinab Maleki
 
-## **1\. Problem Statement**
+## Student Information
+
+* **Student Name(s):** Matin Aminsabouri,  Amirhossein Lavafi Barzaki
+* **Student ID(s):** 40104173 40103403  
+* **Email(s):** m.aminsabouri@ec.iut.ac.ir , a.lavafi@ec.iut.ac.ir
+
+
+## Project Title
+
+**Traffic Prediction on the Road Network of Isfahan Province Using Graph-Based Spatiotemporal Models (T-GCN and GTN-GCN)**
+
+## **1\. Abstract**
 
  Most graph-based traffic prediction methods—particularly those that leverage Graph Neural Networks (GNNs)—are developed and evaluated on high-frequency datasets. For example, in the recent paper *GTN-GCN: Real-Time Traffic Forecasting Using Graph Neural Networks* (Applied Computational Intelligence and Soft Computing, 2025), the T-GCN model is reported to achieve MAE \= 2.68 and RMSE \= 5.33 on the benchmark METR-LA dataset (a collection of 5-minute interval traffic measurements from 207 sensors in Los Angeles).
 
@@ -13,6 +26,33 @@ This research project seeks to answer the following:
 **Can graph-based spatiotemporal models such as T-GCN and the more recent GTN-GCN be effectively applied to low-resolution daily traffic data from Isfahan Province, and how do their performances compare with established results on high-frequency benchmarks like METR-LA?**
 
 Addressing this will not only deepen understanding of model transferability across resolutions and regions, but also provide practical insights into modeling Iranian road traffic.
+
+
+## Objectives
+
+**Objective 1:** Construct a road network graph for Isfahan Province using spatial adjacency and OpenStreetMap topology, integrating daily traffic station data into node features.
+
+**Objective 2:** Implement the T-GCN model to evaluate its capability in modeling spatiotemporal traffic patterns under coarse (daily) temporal resolution.
+
+**Objective 3:** Implement the GTN-GCN model as a modern comparator, examining whether learnable temporal kernels improve forecasting performance on Iranian traffic data.
+
+**Objective 4:** Evaluate both models using MAE, RMSE, and MAPE, and compare their results against published METR-LA benchmarks to quantify degradation due to temporal sparsity.
+
+**Objective 5:** Analyze the influence of traffic attributes (vehicle-class distribution, average speed, violation patterns) on prediction accuracy.
+
+
+
+## Related Work
+
+Early traffic forecasting studies primarily relied on statistical models such as ARIMA, which struggle to capture the nonlinear and spatially dependent nature of road networks. With the emergence of Graph Neural Networks (GNNs), several models—including GCN, STGCN, and DCRNN—introduced spatiotemporal learning frameworks capable of leveraging both road connectivity and temporal dependencies.
+
+Zhao et al. (2019) proposed T-GCN, which combines Graph Convolutional Networks with Gated Recurrent Units to jointly model spatial structure and temporal evolution. T-GCN demonstrated competitive performance on benchmark datasets such as METR-LA.
+
+More recently, Jinia et al. (2025) introduced GTN-GCN, which incorporates learnable temporal kernels to better capture long-range temporal correlations. This model has shown improved forecasting accuracy over classical architectures, highlighting the value of adaptive temporal filters.
+
+Most existing works rely on high-frequency datasets (e.g., 5-minute interval traffic sensors), leaving a gap in understanding how such models perform on low-resolution datasets such as those published on Iran’s national open data platform. This project addresses this gap by evaluating T-GCN and GTN-GCN on daily-resolution traffic data from Isfahan Province.
+
+
 
 ## **2\. Proposed Methodology**
 
@@ -82,12 +122,13 @@ This multi-feature structure enables modeling of not only overall traffic volume
 
 This dataset forms the basis of the graph, where stations are nodes and edges are determined by geographical adjacency or road network topology.
 
-**Sample (ِDates recorded in the Persian calendar)**:
+### **Sample (Dates recorded in the Persian calendar):**
 
-| code      | date           | volume | speed  
-|------------|------—-------|------------|--------|  
-| 214953 | 1397/05/01 | 4090     | 569  |  
-| 214953 | 1397/05/02 | 3914     | 580  |
+| code   | date        | volume | speed |
+|--------|-------------|--------|--------|
+| 214953 | 1397/05/01  | 4090   | 569    |
+| 214953 | 1397/05/02  | 3914   | 580    |
+
 
 ## **Processing Pipeline**
 
@@ -163,14 +204,6 @@ This dataset forms the basis of the graph, where stations are nodes and edges ar
 * IET ITS article  
    [https://ietresearch.onlinelibrary.wiley.com/doi/10.1049/itr2.12224](https://ietresearch.onlinelibrary.wiley.com/doi/10.1049/itr2.12224)
 
-* ScienceDirect traffic studies  
-   [https://www.sciencedirect.com/science/article/abs/pii/S2352485525000970](https://www.sciencedirect.com/science/article/abs/pii/S2352485525000970)
-
-* IEEE ITS applications  
-   [https://ieeexplore.ieee.org/iel8/6287639/6514899/11097318.pdf](https://ieeexplore.ieee.org/iel8/6287639/6514899/11097318.pdf)
-
-* ACM ST-GNN survey  
-   [https://dl.acm.org/doi/10.1145/3716554.3716619](https://dl.acm.org/doi/10.1145/3716554.3716619)
 
   ### **Datasets**
 
